@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="hero-slider">
+        <div class="slides">
+          <img src="cielo.jpg" class="slide active" alt="Cielo 1">
+          <img src="cielo2.avif" class="slide" alt="Cielo 2">
+        </div>
+        <div class="hero-text">
+          <h1>Mailen Todisco</h1>
+          <p></p>
+        </div>
+      </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="buscador.html">Buscador</a></li>
+      <li><a href="../index.html"> Linktree </a></li>
+
+    </ul>
+  </nav>
+
+  <main>
+    <section id="sobre-mi" class="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="sobre-mi-contenido">
+        <div class="sobre-texto">
+          <p>¡Hola! Soy Mailen Todisco 🎉</p>
+          <p>
+            Estudio Marketing en UADE y me apasiona combinar creatividad con tecnología.
+            Descubrí en el diseño web una forma increíble de expresar ideas de forma visual y dinámica.
+          </p>
+          <p>
+            Me interesa el <strong>front-end</strong> (HTML, CSS, JavaScript) y también herramientas de diseño UI
+            como Figma o Illustrator. Mi objetivo es poder integrar el marketing digital con el mundo tech
+            para crear experiencias memorables.
+          </p>
+          <p>
+            Además, disfruto aprender cosas nuevas cada día, ¡y me encanta asumir desafíos creativos!
+          </p>
+          <button onclick="document.getElementById('modal').style.display='flex'">✨ Ver más datos curiosos</button>
+        </div>
+        <div class="sobre-imagen">
+          <img src="avatar.jpeg" alt="Mailen Todisco">
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="proyectos">
+      <h2>Mis Proyectos</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="camara.webp" alt="Carrousel">
+          <h3>Carrousel de imágenes</h3>
+          <p>Un slider con botones para navegar entre imágenes.</p>
+          <a href="carrousel.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+          <img src="calculadora.webp" alt="Calculadora">
+          <h3>Calculadora</h3>
+          <p>Calculadora básica con operaciones aritméticas.</p>
+          <a href="calculadora.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+          <img src="tareas.webp" alt="Lista de tareas">
+          <h3>Lista de tareas</h3>
+          <p>Agregá y eliminá tareas fácilmente.</p>
+          <a href="tareas.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+            <h3>Buscador de Proyectos</h3>
+            <p>Buscá tus proyectos por nombre o descripción.</p>
+            <a href="buscador.html" target="_blank">Ver proyecto</a>
+          </div>
+          
+      </div>
+    </section>
+
+    <section id="habilidades" class="habilidades">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>HTML5</li>
+        <li>CSS3 (Flexbox / Grid)</li>
+        <li>JavaScript (DOM, eventos, arrays)</li>
+        <li>Diseño Responsivo</li>
+        <li>Git y GitHub</li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2>Contacto</h2>
+      <form action="mailto:matodisco@uade.edu.ar" method="post" enctype="text/plain">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <textarea name="mensaje" placeholder="Escribí tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Mailen Todisco</p>
+    <div>
+      <a href="https://github.com/matodisco">GitHub</a> |
+    </div>
+    <div>
+      <a href="..//index.html"> Linktree</a> |
+      <a href="../identikit/Home.html"> Identikit</a> |
+      <a href="../blog/index1.html"> Blog</a>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+      <h2>🌟 Datos curiosos sobre mí</h2>
+      <ul style="text-align: left; list-style: none; padding: 0;">
+        <li>🎵 Me encanta la música.</li>
+        <li>📷 Disfruto la fotografía urbana.</li>
+        <li>🖥️ Sueño con trabajar en diseño UX/UI y Marketing digital.</li>
+        <li>🚀 Mi meta es fusionar marketing y tecnología.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Hero animado
+    const textoHero = "Estudiante de Marketing en UADE";
+    let i = 0;
+    function escribir() {
+      if (i < textoHero.length) {
+        document.querySelector(".hero-content p").textContent += textoHero.charAt(i);
+        i++;
+        setTimeout(escribir, 50);
+      }
+    }
+    document.querySelector(".hero-content p").textContent = "";
+    escribir();
+
+    // Animación cards
+    const cards = document.querySelectorAll('.card');
+    window.addEventListener('scroll', () => {
+      cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          card.classList.add('visible');
+        }
+      });
+    });
+
+    // Validación formulario
+    document.querySelector("form").addEventListener("submit", e => {
+      const nombre = document.querySelector("[name=nombre]").value;
+      const email = document.querySelector("[name=email]").value;
+      if (nombre.length < 2) {
+        alert("El nombre es demasiado corto.");
+        e.preventDefault();
+      } else if (!email.includes("@")) {
+        alert("Ingresá un email válido.");
+        e.preventDefault();
+      }
+    });
+
+  </script>
+
+<script>
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+  
+    setInterval(() => {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 3000);
+  </script>
+<script>
+    // Simple SPA navigation
+    const sections = document.querySelectorAll("main > section");
+  
+    function showSection(id) {
+      sections.forEach(sec => {
+        sec.style.display = (sec.id === id) ? "block" : "none";
+      });
+    }
+  
+    window.addEventListener("hashchange", () => {
+      const id = location.hash.replace("#", "");
+      if (id) showSection(id);
+    });
+  
+    // On load
+    window.addEventListener("load", () => {
+      const id = location.hash.replace("#", "") || "sobre-mi";
+      showSection(id);
+    });
+  </script>
+  
+</body>
+</html>

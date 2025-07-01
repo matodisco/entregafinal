@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrousel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero-slider">
+    <div class="slides">
+      <img src="cielo.jpg" class="slide active" alt="Cielo 1">
+      <img src="cielo2.avif" class="slide" alt="Cielo 2">
+    </div>
+    <div class="hero-text">
+      <h1>Mailen Todisco</h1>
+      <p></p>
+    </div>
+  </header>
+<nav class="navbar">
+  <ul>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="galeria.html">Galería</a></li>
+    <li><a href="buscador.html">Buscador</a></li>
+    <li><a href="../index.html"> Linktree </a></li>
+  </ul>
+</nav>
+
+<main class="carrousel">
+  <h2>Carrousel de imágenes</h2>
+  <img id="imagen" src="Camara.jpeg" alt="Imagen" onclick="abrirLightbox(this.src)" />
+  <div class="buttons">
+    <button onclick="anterior()">Anterior</button>
+    <button onclick="siguiente()">Siguiente</button>
+  </div>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('lightbox').style.display='none'">&times;</span>
+    <img id="lightbox-img" style="max-width: 80%; height: auto;" />
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 - Mailen Todisco</p>
+  <div>
+    <a href="https://github.com/matodisco">GitHub</a> |
+    <a href="https://www.linkedin.com">LinkedIn</a>
+  </div>
+  <div>
+    <a href="linktree.html">Linktree</a> |
+    <a href="identikit.html">Identikit</a> |
+    <a href="blog.html">Blog</a>
+  </div>
+</footer>
+
+<script>
+  const imagenes = [
+    "Camara.jpeg",
+    "Brasil.jpeg",
+    "Europa.jpeg",
+    "MardelPlata.jpeg"
+  ];
+
+  let indice = 0;
+  const img = document.getElementById("imagen");
+
+  function mostrarImagen() {
+    img.src = imagenes[indice];
+  }
+
+  function anterior() {
+    indice = (indice - 1 + imagenes.length) % imagenes.length;
+    mostrarImagen();
+  }
+
+  function siguiente() {
+    indice = (indice + 1) % imagenes.length;
+    mostrarImagen();
+  }
+
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>

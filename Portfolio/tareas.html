@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tareas</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tareas {
+      max-width: 400px;
+      margin: 2em auto;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 0.5em;
+    }
+    button {
+      padding: 0.5em;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #ddd;
+      margin: 0.5em 0;
+      padding: 0.5em;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+    <header class="hero-slider">
+        <div class="slides">
+          <img src="cielo.jpg" class="slide active" alt="Cielo 1">
+          <img src="cielo2.avif" class="slide" alt="Cielo 2">
+        </div>
+        <div class="hero-text">
+          <h1>Mailen Todisco</h1>
+          <p></p>
+        </div>
+      </header>
+<nav class="navbar">
+  <ul>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="galeria.html">Galería</a></li>
+    <li><a href="buscador.html">Buscador</a></li>
+    <li><a href="../index.html"> Linktree </a></li>
+  </ul>
+</nav>
+
+<main class="tareas">
+  <h2>Lista de tareas</h2>
+  <input type="text" id="tarea" placeholder="Nueva tarea">
+  <button onclick="agregarTarea()">Agregar</button>
+  <ul id="lista"></ul>
+</main>
+
+<footer>
+  <p>&copy; 2025 - Mailen Todisco</p>
+  <div>
+    <a href="https://github.com/matodisco">GitHub</a> |
+    <a href="https://www.linkedin.com">LinkedIn</a>
+  </div>
+  <div>
+    <a href="linktree.html">Linktree</a> |
+    <a href="identikit.html">Identikit</a> |
+    <a href="blog.html">Blog</a>
+  </div>
+</footer>
+
+<script>
+  const lista = document.getElementById("lista");
+  let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+  function renderTareas() {
+    lista.innerHTML = "";
+    tareas.forEach((texto, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = `${texto} <button onclick="eliminarTarea(${i})">Eliminar</button>`;
+      lista.appendChild(li);
+    });
+  }
+
+  function agregarTarea() {
+    const texto = document.getElementById("tarea").value;
+    if (texto !== "") {
+      tareas.push(texto);
+      localStorage.setItem("tareas", JSON.stringify(tareas));
+      renderTareas();
+      document.getElementById("tarea").value = "";
+    }
+  }
+
+  function eliminarTarea(index) {
+    tareas.splice(index, 1);
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+    renderTareas();
+  }
+
+  renderTareas();
+</script>
+
+</body>
+</html>
+

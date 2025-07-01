@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .calculadora {
+      max-width: 300px;
+      margin: 2em auto;
+      text-align: center;
+    }
+    input, button {
+      padding: 0.5em;
+      margin: 0.2em;
+    }
+  </style>
+</head>
+<body>
+    <header class="hero-slider">
+        <div class="slides">
+          <img src="cielo.jpg" class="slide active" alt="Cielo 1">
+          <img src="cielo2.avif" class="slide" alt="Cielo 2">
+        </div>
+        <div class="hero-text">
+          <h1>Mailen Todisco</h1>
+          <p></p>
+        </div>
+      </header>
+<nav class="navbar">
+  <ul>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="galeria.html">Galería</a></li>
+    <li><a href="buscador.html">Buscador</a></li>
+    <li><a href="../index.html"> Linktree </a></li>
+  </ul>
+</nav>
+
+<main class="calculadora">
+  <h2>Calculadora</h2>
+  <input type="number" id="num1" placeholder="Número 1">
+  <input type="number" id="num2" placeholder="Número 2">
+  <br />
+  <button onclick="operar('+')">+</button>
+  <button onclick="operar('-')">-</button>
+  <button onclick="operar('*')">×</button>
+  <button onclick="operar('/')">÷</button>
+  <p>Resultado: <span id="resultado">0</span></p>
+</main>
+
+<footer>
+  <p>&copy; 2025 - Mailen Todisco</p>
+  <div>
+    <a href="https://github.com/matodisco">GitHub</a> |
+    <a href="https://www.linkedin.com">LinkedIn</a>
+  </div>
+  <div>
+    <a href="linktree.html">Linktree</a> |
+    <a href="identikit.html">Identikit</a> |
+    <a href="blog.html">Blog</a>
+  </div>
+</footer>
+
+<script>
+  function operar(op) {
+    const a = parseFloat(document.getElementById("num1").value);
+    const b = parseFloat(document.getElementById("num2").value);
+    let r = 0;
+    if (!isNaN(a) && !isNaN(b)) {
+      switch (op) {
+        case '+': r = a + b; break;
+        case '-': r = a - b; break;
+        case '*': r = a * b; break;
+        case '/': r = b !== 0 ? a / b : 'Error'; break;
+      }
+      document.getElementById("resultado").innerText = r;
+    }
+  }
+</script>
+
+</body>
+</html>

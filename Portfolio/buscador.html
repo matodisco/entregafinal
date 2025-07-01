@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscador de Proyectos</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .buscador {
+      max-width: 600px;
+      margin: 2em auto;
+      text-align: center;
+    }
+
+    .buscador input {
+      padding: 0.7em;
+      width: 100%;
+      max-width: 400px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1.5em;
+    }
+
+    #resultados {
+      list-style: none;
+      padding: 0;
+    }
+
+    #resultados li {
+      background: var(--blanco);
+      border: 2px solid var(--secundario);
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 1em;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    #resultados li a {
+      color: var(--primario);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #resultados li small {
+      display: block;
+      color: #555;
+      margin-top: 0.5em;
+    }
+
+    .buscador h2 {
+  color: #ffffff;
+}
+  </style>
+</head>
+<body>
+    <header class="hero-slider">
+        <div class="slides">
+          <img src="cielo.jpg" class="slide active" alt="Cielo 1">
+          <img src="cielo2.avif" class="slide" alt="Cielo 2">
+        </div>
+        <div class="hero-text">
+          <h1>Mailen Todisco</h1>
+          <p></p>
+        </div>
+      </header>
+
+<nav class="navbar">
+  <ul>
+    <nav>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+                <li><a href="index.html#habilidades">Habilidades</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="buscador.html">Buscador</a></li>
+                <li><a href="../index.html"> Linktree </a></li>
+  </ul>
+</nav>
+
+<main class="buscador">
+  <h2>Buscador de Proyectos</h2>
+  <input type="text" id="buscar" placeholder="Buscar proyecto...">
+  <ul id="resultados"></ul>
+</main>
+
+<footer>
+  <p>&copy; 2025 - Mailen Todisco</p>
+</footer>
+
+<script>
+  const datos = [
+    {
+      nombre: "Calculadora",
+      archivo: "calculadora.html",
+      descripcion: "Calculadora básica con operaciones aritméticas."
+    },
+    {
+      nombre: "Lista de Tareas",
+      archivo: "tareas.html",
+      descripcion: "Agregá y eliminá tareas fácilmente, con almacenamiento local."
+    },
+    {
+      nombre: "Carrousel de Imágenes",
+      archivo: "carrousel.html",
+      descripcion: "Un slider de imágenes con botones de anterior y siguiente."
+    },
+  ];
+
+  document.getElementById("buscar").addEventListener("input", e => {
+    const texto = e.target.value.toLowerCase();
+    const resultados = datos.filter(item =>
+      item.nombre.toLowerCase().includes(texto) ||
+      item.descripcion.toLowerCase().includes(texto)
+    );
+
+    const lista = document.getElementById("resultados");
+    lista.innerHTML = "";
+
+    if (resultados.length === 0) {
+      lista.innerHTML = "<li>No se encontraron resultados.</li>";
+    } else {
+      resultados.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${item.archivo}" target="_blank">${item.nombre}</a><small>${item.descripcion}</small>`;
+        lista.appendChild(li);
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
